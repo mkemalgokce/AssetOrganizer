@@ -23,6 +23,28 @@ extension String {
         }
         return result
     }
+
+    func convertToCamelCase() -> String {
+        if self.contains(where: { $0.isUppercase }) && !self.contains(" ") && !self.contains("-") && !self.contains("_") {
+            return self.prefix(1).lowercased() + self.dropFirst()
+        }
+        
+        let normalized = self.replacingOccurrences(of: "[-_]", with: " ", options: .regularExpression)
+        
+        let words = normalized.components(separatedBy: .whitespaces)
+            .filter { !$0.isEmpty }
+            .enumerated()
+            .map { index, word in
+                if index == 0 {
+                    return word.lowercased()
+                }
+                return word.prefix(1).uppercased() + word.dropFirst().lowercased()
+            }
+        
+        return words.joined()
+    }
+
+    
 }
 
 enum StringStyle {
