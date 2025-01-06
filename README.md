@@ -140,22 +140,6 @@ The analysis report includes:
 - Swift 5.9 or later
 - Xcode 15.0 or later
 
-### Project Structure
-
-The project follows CLEAN architecture principles:
-
-- **Domain**: Core business logic and models
-- **Application**: Use cases and business rules
-- **Infrastructure**: Implementation details and file system operations
-- **Presentation**: CLI interface and report formatting
-
-### Building from Source
-
-```bash
-git clone https://github.com/yourusername/AssetOrganizer.git
-cd AssetOrganizer
-swift build
-```
 
 ## Contributing
 
