@@ -86,16 +86,18 @@ extension AssetOrganizerCLI {
             if let outputPath = outputPath {
                 let adjustedPath: String
                 let isJson = outputPath.lowercased().hasSuffix(".json")
+                let isMd = outputPath.lowercased().hasSuffix(".md")
                 
                 if !outputPath.contains(".") {
                     // No extension provided, add .md
                     adjustedPath = outputPath + ".md"
-                } else if isJson {
-                    // Keep .json extension as is
+                } else if isJson || isMd {
+                    // Keep existing extension if it's .json or .md
                     adjustedPath = outputPath
                 } else {
-                    // Other extension provided, append .md
-                    adjustedPath = outputPath + ".md"
+                    // Replace other extensions with .md
+                    let withoutExtension = outputPath.components(separatedBy: ".").dropLast().joined(separator: ".")
+                    adjustedPath = withoutExtension + ".md"
                 }
                 
                 let content = isJson ? report.jsonReport : report.markdownReport

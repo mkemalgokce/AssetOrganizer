@@ -1,26 +1,6 @@
 import Foundation
 import ArgumentParser
 
-private extension String {
-    func convertToCamelCase() -> String {
-        // First, replace special characters with spaces
-        let normalized = self.replacingOccurrences(of: "[-_]", with: " ", options: .regularExpression)
-        
-        // Split into words and convert to camelCase
-        let words = normalized.components(separatedBy: .whitespaces)
-            .filter { !$0.isEmpty }
-            .enumerated()
-            .map { index, word in
-                if index == 0 {
-                    return word.lowercased()
-                }
-                return word.prefix(1).uppercased() + word.dropFirst().lowercased()
-            }
-        
-        return words.joined()
-    }
-}
-
 public struct AssetUsage: Hashable, Codable {
     public let filePath: String
     public let occurrences: Int
