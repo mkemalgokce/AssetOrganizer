@@ -23,7 +23,7 @@ A command-line tool for analyzing and managing unused assets in iOS/macOS projec
 ### Using Swift Package Manager
 
 ```bash
-git clone https://github.com/yourusername/AssetOrganizer.git
+git clone https://github.com/mkemalgokce/AssetOrganizer.git
 cd AssetOrganizer
 swift build -c release
 sudo cp .build/release/AssetOrganizer /usr/local/bin/AssetOrganizer
